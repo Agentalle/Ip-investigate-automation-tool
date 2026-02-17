@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Threat Intelligence</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Cyber Threat Intelligence Tool</h1>
+
+    <div class="top-bar">
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Import & Scan</button>
+        </form>
+
+        <a href="/export_malicious">
+            <button>Export Malicious</button>
+        </a>
+    </div>
+
+    <table>
+        <tr>
+            <th>S.No</th>
+            <th>IP</th>
+            <th>AbuseIP %</th>
+            <th>VT Engine %</th>
+        </tr>
+
+        {% for row in results %}
+        <tr>
+            <td>{{ row["S.No"] }}</td>
+            <td>{{ row["IP"] }}</td>
+            <td>{{ row["AbuseIP %"] }}</td>
+            <td>{{ row["VT Engine %"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>
